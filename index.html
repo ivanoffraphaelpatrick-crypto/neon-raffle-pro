@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NEON RAFFLE PRO</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#080a16;--panel:#12172b;--line:#303653;--pink:#ff4cba;--cyan:#42e8f5;--muted:#9ba4c1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#2a1640 0,transparent 48%),var(--bg);color:#fff;font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:760px;margin:auto;padding:18px 14px 42px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.brand{font-weight:950;letter-spacing:3px}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:3px}.logo{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;margin-right:9px;background:linear-gradient(135deg,var(--pink),#884dff);box-shadow:0 0 20px #ff4cba66}.live{font-size:11px;color:#72f2cf;background:#12312e;padding:8px 11px;border-radius:30px}.tabs{display:flex;gap:8px;margin-bottom:16px}.tab{flex:1;border:1px solid var(--line);border-radius:11px;background:#171d34;color:#aeb7d3;padding:12px;font-weight:800}.tab.active{color:white;border-color:var(--pink);background:#321d3c}.hero,.panel,.stat{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#17152d,#101a2e);padding:19px;margin-bottom:14px}.hero{text-align:center;border-color:#674078;box-shadow:0 0 30px #ff36a91c}.eyebrow{font-size:11px;letter-spacing:3px;color:var(--pink);font-weight:900}.hero h1{font-size:clamp(28px,7vw,42px);line-height:1.05;margin:13px 0}.prize{background:#090f20;border:1px solid #35415e;border-radius:13px;padding:16px;margin-top:17px}.prize small{display:block;color:var(--cyan);letter-spacing:2px;font-weight:800;margin-bottom:7px}.prize strong{font-size:20px}.muted{color:var(--muted)}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.label{display:block;color:var(--muted);font-size:12px;margin:12px 0 7px}input,textarea{width:100%;background:#090e1e;border:1px solid #394260;border-radius:11px;color:#fff;padding:13px;outline:none}input:focus,textarea:focus{border-color:var(--pink)}.pseudo{position:relative}.pseudo span{position:absolute;left:13px;top:13px;color:var(--pink);font-weight:900}.pseudo input{padding-left:31px}.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:900;width:100%;margin-top:12px}.pinkbtn{background:linear-gradient(100deg,#ff36a9,#a64cff);color:white;box-shadow:0 0 22px #ff36a933}.cyanbtn{background:linear-gradient(100deg,#21c9e4,#3988ff);color:#06121b}.ghost{background:#202741;border:1px solid #394260;color:white}.btn:disabled{opacity:.45;cursor:not-allowed}.stat{text-align:center;background:#151b32}.stat strong{display:block;color:var(--cyan);font-size:32px}.ticket{border:1px solid var(--pink);background:linear-gradient(135deg,#27183c,#102a3b);border-radius:18px;padding:22px;text-align:center;margin-top:14px;box-shadow:0 0 28px #ff36a933}.ticketnum{font-size:clamp(48px,13vw,70px);font-weight:1000;color:var(--cyan);text-shadow:0 0 20px #42e8f5aa}.hidden{display:none!important}.error{color:#ff9aaf;font-size:12px;margin-top:10px}.ok{color:#7cf0c0;font-size:13px}.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.adminGrid .stat{margin:0;padding:13px}.adminGrid strong{font-size:26px}.list{max-height:300px;overflow:auto}.item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #2a3049}.item b{overflow-wrap:anywhere}.tiny{font-size:11px;color:var(--muted)}.del{background:#302036;border:1px solid #65405b;color:#ff9bd8;border-radius:8px;padding:7px 9px;font-size:11px}.winnerbox{min-height:205px;border:1px solid var(--pink);border-radius:18px;background:radial-gradient(ellipse at center,#42204f,#10172b 72%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;margin:12px 0}.winnername{font-size:clamp(30px,8vw,52px);font-weight:1000;color:#ff67c7;text-shadow:0 0 20px #ff36a9;overflow-wrap:anywhere}.roll{animation:blink .13s infinite}@keyframes blink{50%{opacity:.35;transform:scale(.97)}}.confetti{position:fixed;top:-15px;width:9px;height:13px;z-index:99;pointer-events:none;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(800deg);opacity:.2}}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292342;border:1px solid var(--pink);border-radius:12px;padding:12px 16px;z-index:110;max-width:90%;font-size:13px}.foot{text-align:center;color:#78819f;font-size:11px;padding:18px}.notice{font-size:11px;color:#929ab8;line-height:1.5;margin-top:12px}
+@media(min-width:650px){.wrap{padding-top:28px}.hero{padding:28px}.panel{padding:22px}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div style="display:flex;align-items:center"><span class="logo">N</span><div class="brand">NEON RAFFLE<small>PRO · TIKTOK LIVE EDITION</small></div></div><span class="live">● LIVE DRAW</span></header>
+<nav class="tabs"><button class="tab active" id="publicTab">✦ PARTICIPER</button><button class="tab" id="adminTab">⚙ ADMIN</button></nav>
+<section id="publicView">
+ <div class="hero"><div class="eyebrow">✦ GRANDE TOMBOLA ✦</div><h1 id="pubTitle">LA TOMBOLA NEON</h1><p class="muted">Tente ta chance, c'est gratuit !</p><div class="prize"><small>🎁 LOT À GAGNER</small><strong id="pubPrize">Un cadeau surprise !</strong></div></div>
+ <div class="panel"><div class="row"><b>🎟️ Inscription</b><span id="openStatus" class="tiny">Chargement…</span></div>
+  <div id="signup"><label class="label" for="pseudo">TON PSEUDO TIKTOK</label><div class="pseudo"><span>@</span><input id="pseudo" maxlength="30" placeholder="tonpseudo" autocomplete="off"></div><button id="join" class="btn pinkbtn">PARTICIPER GRATUITEMENT ✦</button><div id="joinError" class="error hidden"></div></div>
+  <div id="closed" class="hidden" style="text-align:center;padding:20px">🔒<h3>Les inscriptions sont fermées</h3><p class="muted">Reste connecté pour le prochain tirage !</p></div>
+  <div id="ticket" class="ticket hidden"><div class="eyebrow">✦ INSCRIPTION CONFIRMÉE ✦</div><p class="muted">Ton numéro de ticket</p><div class="ticketnum" id="ticketNum">#001</div><b id="ticketUser">@pseudo</b><p class="ok">✓ Tu participes au tirage !</p></div>
+ </div>
+ <div class="stat"><span class="tiny">PARTICIPANTS INSCRITS</span><strong id="count">—</strong><span class="tiny">Bonne chance à tous ! 🍀</span></div>
+</section>
+<section id="adminView" class="hidden">
+ <div id="loginPanel" class="panel"><h2 style="text-align:center">🔐 ESPACE ADMIN</h2><p class="muted" style="text-align:center;font-size:13px">Connexion sécurisée</p><label class="label">Adresse e-mail administrateur</label><input id="email" type="email" placeholder="admin@exemple.com"><label class="label">Mot de passe</label><input id="password" type="password" placeholder="Mot de passe"><button id="login" class="btn pinkbtn">SE CONNECTER</button><div id="loginError" class="error hidden"></div><p class="notice">Le compte administrateur doit être créé dans Supabase Auth puis autorisé dans la table admins. Aucun mot de passe par défaut n'est intégré à l'application.</p></div>
+ <div id="dashboard" class="hidden">
+  <div class="row" style="margin-bottom:13px"><div><h2 style="margin:0">Dashboard</h2><span class="tiny">Gestion de la tombola</span></div><button id="logout" class="del">Déconnexion ↗</button></div>
+  <div class="adminGrid" style="margin-bottom:14px"><div class="stat"><strong id="adminCount">0</strong><span class="tiny">Participants</span></div><div class="stat"><strong id="winnerCount">0</strong><span class="tiny">Gagnants</span></div></div>
+  <div class="panel"><b>🎨 Configuration</b><label class="label">Titre du concours</label><input id="editTitle" maxlength="60"><label class="label">Description du lot</label><textarea id="editPrize" rows="2" maxlength="180"></textarea><button id="saveSettings" class="btn cyanbtn">ENREGISTRER</button><button id="toggle" class="btn pinkbtn">FERMER LA TOMBOLA</button></div>
+  <div class="panel"><div class="row"><b>👥 Participants</b><span class="tiny" id="listCount">0 tickets</span></div><div class="list" id="participants"></div><button id="reset" class="btn ghost">🗑️ Réinitialiser toute la liste</button></div>
+  <div class="panel"><b>🎰 GRAND TIRAGE AU SORT</b><div class="winnerbox" id="winnerBox"><span class="eyebrow">✦ LE PROCHAIN GAGNANT ✦</span><div class="winnername" id="winnerName">?</div><div id="winnerTicket" style="font-size:24px;color:var(--cyan);font-weight:900;margin-top:5px">#---</div><p class="tiny" id="drawHint">Prêt pour le grand tirage ?</p></div><button id="draw" class="btn pinkbtn" style="font-size:17px">🎲 LANCER LE TIRAGE</button><p class="notice">Les gagnants précédents sont automatiquement exclus des prochains tirages.</p></div>
+  <div class="panel"><b>🏆 Historique des gagnants</b><div id="history" style="margin-top:10px"></div><button id="clearHistory" class="btn ghost">Effacer l'historique</button></div>
+ </div>
+</section><footer class="foot">NEON RAFFLE PRO · TIKTOK LIVE EXPERIENCE</footer>
+</main><div id="toast" class="toast hidden"></div>
+<script>
+const SUPABASE_URL="https://abqwrnnsjthhricywgrf.supabase.co";
+const SUPABASE_ANON_KEY="sb_publishable_e6WjlTe6yovbKqA6akcR7w_dStHf8Kh";
+const configured=!SUPABASE_URL.includes("YOUR_")&&!SUPABASE_ANON_KEY.includes("YOUR_");
+const client=configured?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const $=id=>document.getElementById(id);let settings={title:"LA TOMBOLA NEON",prize:"Un cadeau surprise !",is_open:true},people=[],winners=[],busy=false,channel=null;
+const ticket=n=>"#"+String(n).padStart(3,"0");
+function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),2800)}
+function tab(admin){$("publicView").classList.toggle("hidden",admin);$("adminView").classList.toggle("hidden",!admin);$("publicTab").classList.toggle("active",!admin);$("adminTab").classList.toggle("active",admin)}
+$("publicTab").onclick=()=>tab(false);$("adminTab").onclick=()=>tab(true);
+function setPublic(){ $("pubTitle").textContent=settings.title;$("pubPrize").textContent=settings.prize;$("count").textContent=String(people.length||0);$("openStatus").textContent=settings.is_open?"● INSCRIPTIONS OUVERTES":"● INSCRIPTIONS FERMÉES";$("openStatus").style.color=settings.is_open?"#7cf0c0":"#ff91a8";$("signup").classList.toggle("hidden",!settings.is_open);$("closed").classList.toggle("hidden",settings.is_open);}
+function setAdmin(){
+ $("adminCount").textContent=people.length;$("winnerCount").textContent=winners.length;$("listCount").textContent=people.length+" tickets";$("editTitle").value=settings.title;$("editPrize").value=settings.prize;$("toggle").textContent=settings.is_open?"FERMER LA TOMBOLA":"OUVRIR LA TOMBOLA";
+ $("participants").innerHTML=people.length?people.map(p=>`<div class="item"><div><b>${safe(p.username)}</b><div class="tiny">${ticket(p.id)}</div></div><button class="del" data-del="${p.id}">Supprimer</button></div>`).join(""):'<p class="tiny">Aucun participant.</p>';
+ $("history").innerHTML=winners.length?winners.map(w=>`<div class="item"><div><b style="color:var(--pink)">${safe(w.participants?.username||"Participant")}</b><div class="tiny">${ticket(w.participant_id)} · ${new Date(w.drawn_at).toLocaleString("fr-FR")}</div></div><span>🏆</span></div>`).join(""):'<p class="tiny">Aucun gagnant pour le moment.</p>';
+ $("draw").disabled=busy||people.length===0||people.every(p=>winners.some(w=>w.participant_id===p.id));
+}
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+async function refresh(){
+ if(!client){$("openStatus").textContent="Configuration requise";$("join").disabled=true;$("joinError").textContent="Ajoute les identifiants Supabase dans index.html pour activer les inscriptions."; $("joinError").classList.remove("hidden");return}
+ const {data,error}=await client.rpc("get_public_raffle_state");if(!error&&data){settings={...settings,...data};$("count").textContent=data.participant_count}
+ setPublic();
+ if((await client.auth.getSession()).data.session){await refreshAdmin()}
+}
+async function refreshAdmin(){
+ const [p,w,s]=await Promise.all([client.from("participants").select("*").order("id"),client.from("winners").select("id,participant_id,drawn_at,participants(username)").order("drawn_at",{ascending:false}),client.from("raffle_settings").select("*").eq("singleton",true).single()]);
+ if(p.error||w.error||s.error){toast("Erreur de chargement admin : vérifie les droits SQL.");return}
+ people=p.data;winners=w.data;settings={...settings,...s.data};setPublic();setAdmin();
+}
+$("join").onclick=async()=>{
+ const val=$("pseudo").value.trim().replace(/^@+/,"").toLowerCase();$("joinError").classList.add("hidden");
+ if(!/^[a-z0-9._]{1,30}$/.test(val)){$("joinError").textContent="Pseudo invalide : lettres, chiffres, points et underscores uniquement.";$("joinError").classList.remove("hidden");return}
+ $("join").disabled=true;
+ const {data,error}=await client.rpc("register_raffle_participant",{p_username:val});$("join").disabled=false;
+ if(error){let msg=error.message.includes("USERNAME_ALREADY_REGISTERED")?"Ce pseudo est déjà inscrit.":error.message.includes("RAFFLE_CLOSED")?"Les inscriptions sont fermées.":"Inscription impossible : "+error.message;$("joinError").textContent=msg;$("joinError").classList.remove("hidden");return}
+ $("ticketNum").textContent=ticket(data.ticket);$("ticketUser").textContent=data.username;$("ticket").classList.remove("hidden");$("signup").classList.add("hidden");$("pseudo").value="";await refresh();toast("Inscription confirmée !");
+};
+$("login").onclick=async()=>{
+ if(!client)return toast("Configure d'abord Supabase.");
+ $("login").disabled=true;const {error}=await client.auth.signInWithPassword({email:$("email").value,password:$("password").value});$("login").disabled=false;
+ if(error){$("loginError").textContent="Connexion refusée : "+error.message;$("loginError").classList.remove("hidden");return}
+ $("loginPanel").classList.add("hidden");$("dashboard").classList.remove("hidden");await refreshAdmin();subscribe();
+};
+$("logout").onclick=async()=>{await client.auth.signOut();$("dashboard").classList.add("hidden");$("loginPanel").classList.remove("hidden");if(channel)await client.removeChannel(channel);};
+$("saveSettings").onclick=async()=>{
+ const title=$("editTitle").value.trim(),prize=$("editPrize").value.trim();if(!title||!prize)return toast("Complète le titre et le lot.");
+ const {error}=await client.from("raffle_settings").update({title,prize,updated_at:new Date().toISOString()}).eq("singleton",true);if(error)return toast("Modification refusée : "+error.message);await refresh();toast("Configuration enregistrée !");
+};
+$("toggle").onclick=async()=>{const {error}=await client.from("raffle_settings").update({is_open:!settings.is_open,updated_at:new Date().toISOString()}).eq("singleton",true);if(error)return toast(error.message);await refresh();toast(settings.is_open?"Inscriptions ouvertes !":"Inscriptions fermées !")};
+$("participants").onclick=async e=>{const b=e.target.closest("[data-del]");if(!b)return;if(!confirm("Supprimer ce participant ?"))return;const {error}=await client.from("participants").delete().eq("id",b.dataset.del);if(error)return toast("Suppression impossible : ce participant est peut-être déjà gagnant.");await refreshAdmin();toast("Participant supprimé.")};
+$("reset").onclick=async()=>{if(!confirm("Supprimer tous les participants et l'historique des gagnants ?"))return;const a=await client.from("winners").delete().not("id","is",null);if(a.error)return toast(a.error.message);const b=await client.from("participants").delete().not("id","is",null);if(b.error)return toast(b.error.message);$("winnerName").textContent="?";$("winnerTicket").textContent="#---";await refreshAdmin();toast("Tombola réinitialisée.")};
+$("clearHistory").onclick=async()=>{if(!confirm("Effacer l'historique ? Les anciens gagnants pourront être tirés à nouveau."))return;const {error}=await client.from("winners").delete().not("id","is",null);if(error)return toast(error.message);await refreshAdmin();toast("Historique effacé.")};
+function confetti(){for(let i=0;i<100;i++){const e=document.createElement("i");e.className="confetti";e.style.left=Math.random()*100+"vw";e.style.background=["#ff4cba","#42e8f5","#ffe66d","#a64cff","#fff"][i%5];e.style.animationDelay=Math.random()+ "s";document.body.append(e);setTimeout(()=>e.remove(),4500)}}
+$("draw").onclick=async()=>{
+ if(busy)return;const eligible=people.filter(p=>!winners.some(w=>w.participant_id===p.id));if(!eligible.length)return toast("Aucun participant éligible.");
+ busy=true;$("draw").disabled=true;$("winnerBox").classList.add("roll");$("drawHint").textContent="LE SUSPENSE EST À SON COMBLE…";
+ let ticks=0;const spin=setInterval(()=>{const p=eligible[Math.floor(Math.random()*eligible.length)];$("winnerName").textContent=p.username;$("winnerTicket").textContent=ticket(p.id);ticks++},65);
+ await new Promise(r=>setTimeout(r,3600));clearInterval(spin);
+ const {data,error}=await client.rpc("admin_draw_raffle_winner");
+ if(error){busy=false;$("winnerBox").classList.remove("roll");$("drawHint").textContent="Tirage non effectué";await refreshAdmin();return toast("Tirage impossible : "+error.message)}
+ $("winnerBox").classList.remove("roll");$("winnerName").textContent=data.username;$("winnerTicket").textContent=ticket(data.ticket);$("drawHint").textContent="🏆 FÉLICITATIONS ! GAGNANT OFFICIEL !";busy=false;confetti();await refreshAdmin();toast("🏆 Gagnant : "+data.username);
+};
+function subscribe(){if(channel)client.removeChannel(channel);channel=client.channel("raffle-live").on("postgres_changes",{event:"*",schema:"public",table:"participants"},()=>refresh()).on("postgres_changes",{event:"*",schema:"public",table:"raffle_settings"},()=>refresh()).on("postgres_changes",{event:"*",schema:"public",table:"winners"},()=>refreshAdmin()).subscribe();}
+(async()=>{if(!configured){$("openStatus").textContent="À configurer";$("join").disabled=true;$("joinError").textContent="Connecte le projet Supabase pour activer les fonctions en ligne."; $("joinError").classList.remove("hidden");return}
+ await refresh();const {data}=await client.auth.getSession();if(data.session){const {data:admin}=await client.from("admins").select("user_id").eq("user_id",data.session.user.id).maybeSingle();if(admin){$("loginPanel").classList.add("hidden");$("dashboard").classList.remove("hidden");await refreshAdmin();subscribe()}else{await client.auth.signOut()}}
+})();
+</script></body></html>
